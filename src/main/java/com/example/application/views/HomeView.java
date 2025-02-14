@@ -13,7 +13,7 @@ public class HomeView extends VerticalLayout {
     public HomeView() {
 
         add(new H1("Welcome to Bookstore application"));
-        add(new Paragraph("Please sign in or register for use"));
+        add(new Paragraph("Please select tab on the left"));
 
     }
 }

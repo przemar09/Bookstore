@@ -40,6 +40,7 @@ public class MainLayout extends AppLayout {
 
     public MainLayout(SecurityService securityService) {
         this.securityService = securityService;
+
         setPrimarySection(Section.DRAWER);
         addDrawerContent();
         addHeaderContent();
@@ -52,14 +53,11 @@ public class MainLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
-        H1 logo = new H1("Vaadin CRM");
-        logo.addClassNames(
-                LumoUtility.FontSize.LARGE,
-                LumoUtility.Margin.MEDIUM);
+        H1 logo = new H1("");
 
         Button logout = new Button("Log out ", e -> securityService.logout());
 
-        var header = new HorizontalLayout(new DrawerToggle(), logo, logout);
+        var header = new HorizontalLayout(logo, logout);
 
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.expand(logo);
