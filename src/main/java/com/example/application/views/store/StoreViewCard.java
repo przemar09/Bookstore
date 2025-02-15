@@ -1,4 +1,4 @@
-package com.example.application.views.shelf;
+package com.example.application.views.store;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -25,9 +25,9 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 
 import java.time.LocalDateTime;
 
-public class ShelfViewCard extends ListItem {
+public class StoreViewCard extends ListItem {
 
-    public ShelfViewCard(String title, String author, String url, LocalDateTime rented) {
+    public StoreViewCard(String title, String author, String url, LocalDateTime rented) {
         addClassNames(Background.CONTRAST_5, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Padding.MEDIUM,
                 BorderRadius.LARGE);
 
@@ -73,6 +73,7 @@ public class ShelfViewCard extends ListItem {
 
         HorizontalLayout layout = new HorizontalLayout(readBtn, retrunBtn);
         add(div, header, subtitle, rentedSp, left, layout);
+
 
     }
 }
