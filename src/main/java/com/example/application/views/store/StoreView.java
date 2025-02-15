@@ -1,4 +1,4 @@
-package com.example.application.views.shelf;
+package com.example.application.views.store;
 
 import com.example.application.model.Book;
 import com.example.application.service.BookService;
@@ -30,15 +30,15 @@ import org.vaadin.lineawesome.LineAwesomeIconUrl;
 import java.util.List;
 
 @PermitAll
-@PageTitle("Shelf")
-@Route("shelf")
+@PageTitle("Store")
+@Route("store")
 @Menu(order = 0, icon = LineAwesomeIconUrl.TH_LIST_SOLID)
-public class ShelfView extends Main implements HasComponents, HasStyle {
+public class StoreView extends Main implements HasComponents, HasStyle {
 
     private OrderedList imageContainer;
     private final BookService bookService;
 
-    public ShelfView(BookService bookService) {
+    public StoreView(BookService bookService) {
         this.bookService = bookService;
 
         constructUI();
@@ -46,13 +46,12 @@ public class ShelfView extends Main implements HasComponents, HasStyle {
         List<Book> books = bookService.getAllBooks();
 
         for (Book book : books) {
-            if (book.isAvailable() == false) {
-                imageContainer.add(new ShelfViewCard(book.getTitle(), book.getAuthor(),
+            if (book.isAvailable() == true) {
+                imageContainer.add(new StoreViewCard(book.getTitle(), book.getAuthor(),
                         "https://ecsmedia.pl/cdn-cgi/image/format=webp,width=544,height=544,/c/john-wick-b-iext135817347.jpg", book.getAdded()));
             }
         }
     }
-
     private void constructUI() {
         addClassNames("shelf-view");
         addClassNames(MaxWidth.SCREEN_LARGE, Margin.Horizontal.AUTO, Padding.Bottom.LARGE, Padding.Horizontal.LARGE);
@@ -61,9 +60,9 @@ public class ShelfView extends Main implements HasComponents, HasStyle {
         container.addClassNames(AlignItems.CENTER, JustifyContent.BETWEEN);
 
         VerticalLayout headerContainer = new VerticalLayout();
-        H2 header = new H2("Your books");
+        H2 header = new H2("Rent a book");
         header.addClassNames(Margin.Bottom.NONE, Margin.Top.XLARGE, FontSize.XXXLARGE);
-        Paragraph description = new Paragraph("Browse your available books");
+        Paragraph description = new Paragraph("Browse available books for a rent");
         description.addClassNames(Margin.Bottom.XLARGE, Margin.Top.NONE, TextColor.SECONDARY);
         headerContainer.add(header, description);
 
