@@ -1,4 +1,5 @@
 insert into sample_person(version, id,first_name,last_name,email,phone,date_of_birth,occupation,role,important) values (1, 1,'Eula','Lane','eula.lane@jigrormo.ye','(762) 526-5961','1955-07-11','Insurance Clerk','Worker',false);
 
-insert into book(title, author, isbn, cover_Url, is_available) values ('John Wick', 'Hilary', '324325', 'dsffds', true);
-insert into book(title, author, isbn, cover_Url, is_available) values ('Stary', 'Hilary', '324325', 'dsffds', true);
+insert into book(title, author, isbn, cover_Url, is_available) values ('Bezkarny', 'Mróz Remigiusz', '72504338', 'https://ecsmedia.pl/cdn-cgi/image/format=webp,width=544,height=544,/c/bezkarny-b-iext175930205.jpg', false);
+insert into book(title, author, isbn, cover_Url, is_available) values ('Erem', 'Reich Aldona', '72504178', 'https://ecsmedia.pl/cdn-cgi/image/format=webp,width=544,height=544,/c/erem-b-iext176128896.jpg', false);
+insert into book(title, author, isbn, cover_Url, is_available) values ('Złodziejski spadek', 'Mazalik Bożena', '59855484', 'https://ecsmedia.pl/cdn-cgi/image/format=webp,width=544,height=544,/c/zlodziejski-spadek-b-iext176250024.jpg', true)

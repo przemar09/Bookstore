@@ -48,7 +48,7 @@ public class StoreView extends Main implements HasComponents, HasStyle {
         for (Book book : books) {
             if (book.isAvailable() == true) {
                 imageContainer.add(new StoreViewCard(book.getTitle(), book.getAuthor(),
-                        "https://ecsmedia.pl/cdn-cgi/image/format=webp,width=544,height=544,/c/john-wick-b-iext135817347.jpg", book.getAdded()));
+                        book.getCoverUrl(), book.getAdded()));
             }
         }
     }
