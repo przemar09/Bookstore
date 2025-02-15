@@ -74,5 +74,6 @@ public class StoreViewCard extends ListItem {
         HorizontalLayout layout = new HorizontalLayout(readBtn, retrunBtn);
         add(div, header, subtitle, rentedSp, left, layout);
 
+
     }
 }
