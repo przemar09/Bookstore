@@ -1,10 +1,14 @@
 package com.example.application.views.shelf;
 
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.theme.lumo.LumoUtility.AlignItems;
 import com.vaadin.flow.theme.lumo.LumoUtility.Background;
 import com.vaadin.flow.theme.lumo.LumoUtility.BorderRadius;
@@ -19,9 +23,11 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import com.vaadin.flow.theme.lumo.LumoUtility.TextColor;
 import com.vaadin.flow.theme.lumo.LumoUtility.Width;
 
+import java.time.LocalDateTime;
+
 public class ShelfViewCard extends ListItem {
 
-    public ShelfViewCard(String text, String url) {
+    public ShelfViewCard(String title, String author, String url, LocalDateTime rented) {
         addClassNames(Background.CONTRAST_5, Display.FLEX, FlexDirection.COLUMN, AlignItems.START, Padding.MEDIUM,
                 BorderRadius.LARGE);
 
@@ -33,27 +39,40 @@ public class ShelfViewCard extends ListItem {
         Image image = new Image();
         image.setWidth("100%");
         image.setSrc(url);
-        image.setAlt(text);
+        image.setAlt(title);
 
         div.add(image);
 
         Span header = new Span();
         header.addClassNames(FontSize.XLARGE, FontWeight.SEMIBOLD);
-        header.setText("Title");
+        header.setText(title);
 
         Span subtitle = new Span();
         subtitle.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
-        subtitle.setText("Card subtitle");
+        subtitle.setText(author);
 
-        Paragraph description = new Paragraph(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.");
-        description.addClassName(Margin.Vertical.MEDIUM);
+        Span rentedSp = new Span();
+        rentedSp.addClassNames(FontSize.SMALL, TextColor.SECONDARY);
+        rentedSp.setText("Rented : " + rented);
 
-        Span badge = new Span();
-        badge.getElement().setAttribute("theme", "badge");
-        badge.setText("Label");
+        Paragraph left = new Paragraph(
+                "Left: ");
+        left.addClassName(Margin.Vertical.MEDIUM);
 
-        add(div, header, subtitle, description, badge);
+
+        Dialog read = new Dialog();
+        read.setHeaderTitle("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.");
+
+        Dialog dialog = new Dialog();
+        dialog.setHeaderTitle("Want to return?");
+        Button retrunBtn = new Button("Return");
+        retrunBtn.addClickListener(e -> dialog.open());
+
+        Button readBtn = new Button("Read");
+        readBtn.addClickListener(e -> read.open());
+
+        HorizontalLayout layout = new HorizontalLayout(readBtn, retrunBtn);
+        add(div, header, subtitle, rentedSp, left, layout);
 
     }
 }
